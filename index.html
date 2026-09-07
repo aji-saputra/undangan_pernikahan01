@@ -366,21 +366,54 @@
       transform: translateX(-50%);
     }
 
+    /* ========== TIMELINE ZIG-ZAG KIRI / KANAN ========== */
     .timeline-item {
-      display: flex;
+      display: grid;
+      grid-template-columns: 1fr 56px 1fr;
       align-items: center;
       margin-bottom: 32px;
       position: relative;
+      min-height: 70px;
     }
-
-    .timeline-item:nth-child(odd) { flex-direction: row-reverse; }
 
     .timeline-content {
-      width: 42%;
+      width: auto;
       text-align: center;
+      padding: 0 10px;
     }
 
-    .timeline-item:nth-child(odd) .timeline-content { text-align: center; }
+    /* Item ganjil: teks di kiri */
+    .timeline-item:nth-child(odd) .timeline-content {
+      grid-column: 1;
+      text-align: right;
+    }
+
+    .timeline-item:nth-child(odd) .timeline-dot {
+      grid-column: 2;
+      grid-row: 1;
+    }
+
+    .timeline-item:nth-child(odd) .timeline-spacer {
+      grid-column: 3;
+      grid-row: 1;
+    }
+
+    /* Item genap: teks di kanan */
+    .timeline-item:nth-child(even) .timeline-spacer {
+      grid-column: 1;
+      grid-row: 1;
+    }
+
+    .timeline-item:nth-child(even) .timeline-dot {
+      grid-column: 2;
+      grid-row: 1;
+    }
+
+    .timeline-item:nth-child(even) .timeline-content {
+      grid-column: 3;
+      grid-row: 1;
+      text-align: left;
+    }
 
     .timeline-dot {
       width: 48px;
@@ -398,7 +431,7 @@
       margin: 0 auto;
     }
 
-    .timeline-spacer { width: 42%; }
+    .timeline-spacer { width: auto; }
 
     .timeline-time {
       font-size: 11px;
@@ -1030,6 +1063,7 @@
       <div class="timeline-dot">🕌</div>
       <div class="timeline-spacer"></div>
     </li>
+
     <li class="timeline-item">
       <div class="timeline-spacer"></div>
       <div class="timeline-dot">🥂</div>
@@ -1038,6 +1072,7 @@
         <div class="timeline-label">🥂 Resepsi</div>
       </div>
     </li>
+
     <li class="timeline-item">
       <div class="timeline-content">
         <div class="timeline-time">13:00 WIB</div>
@@ -1046,6 +1081,7 @@
       <div class="timeline-dot">🍽️</div>
       <div class="timeline-spacer"></div>
     </li>
+
     <li class="timeline-item">
       <div class="timeline-spacer"></div>
       <div class="timeline-dot">💃</div>
@@ -1054,6 +1090,7 @@
         <div class="timeline-label">💃 Hiburan</div>
       </div>
     </li>
+
     <li class="timeline-item">
       <div class="timeline-content">
         <div class="timeline-time">17:00 WIB</div>
